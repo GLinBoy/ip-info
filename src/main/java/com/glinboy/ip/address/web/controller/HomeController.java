@@ -1,4 +1,4 @@
-package com.glinboy.ip.address.web.rest;
+package com.glinboy.ip.address.web.controller;
 
 import java.util.Optional;
 
@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequestMapping("/")
-public class HomeResource {
+public class HomeController {
 
 	@Value("${application.header-candidates}")
 	private String[] headerCandidates;

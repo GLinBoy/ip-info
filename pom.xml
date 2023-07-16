@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.glinboy.ip.address</groupId>
-	<artifactId>ip-address</artifactId>
+	<artifactId>ip-info</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ip-address</name>
 	<description>A simple service to return user IP address</description>

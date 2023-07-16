@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.view.RedirectView;
+
+import com.glinboy.ip.address.model.enums.ResponseType;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -18,13 +20,28 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/")
 public class HomeController {
 
+	@Value("#{'${application.default-response-type}'.toUpperCase()}")
+	private String responseType;
+
 	@Value("${application.header-candidates}")
 	private String[] headerCandidates;
 
 	public static final String USER_IP_NAME = "USER_IP";
 
 	@GetMapping
-	public String getHome(HttpServletRequest request, Model model) {
+	public RedirectView redirectToHome() {
+		ResponseType rt = ResponseType.lookup(responseType);
+		if (ResponseType.HTML.equals(rt)) {
+			return new RedirectView("/index.html");
+		} else if (ResponseType.JSON.equals(rt)) {
+			return new RedirectView("/index.json");
+		} else {
+			return new RedirectView("/index.html");
+		}
+	}
+
+	@GetMapping("/index.html")
+	public String getHomeHtml(HttpServletRequest request, Model model) {
 		Optional<String> userIpOptional = Optional.empty();
 
 		if (RequestContextHolder.getRequestAttributes() == null) {

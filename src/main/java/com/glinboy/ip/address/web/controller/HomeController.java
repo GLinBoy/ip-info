@@ -1,5 +1,6 @@
 package com.glinboy.ip.address.web.controller;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +11,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.glinboy.ip.address.model.dto.IpInfoResponseDTO;
@@ -55,11 +57,16 @@ public class HomeController {
 	}
 
 	@GetMapping("/index.json")
-	public ResponseEntity<IpInfoResponseDTO> getHomeJson(HttpServletRequest request) {
+	public ResponseEntity<IpInfoResponseDTO> getHomeJson(HttpServletRequest request,
+			@RequestHeader MultiValueMap<String, String> requestHeaders, @RequestParam Collection<String> includes) {
 		Optional<String> userIpOptional = RequestUtils.extractIP(request, headerCandidates);
 		IpInfoResponseDTO ipInfo = IpInfoResponseDTO.builder().build();
 
 		userIpOptional.ifPresentOrElse(ipInfo::setIp, () -> ipInfo.setIp(request.getRemoteAddr()));
+
+		if (includes.contains("headers")) {
+			ipInfo.setHeadears(requestHeaders);
+		}
 
 		return ResponseEntity.ok(ipInfo);
 	}

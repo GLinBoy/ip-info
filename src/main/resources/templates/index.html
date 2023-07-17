@@ -30,11 +30,20 @@
 					<h1 th:text="${USER_IP}">User IP</h1>
 				</dev>
 			</dev>
+			<dev class="row text-start"  data-bs-theme="dark">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item" th:each="header : ${headers}">
+						<b th:text="${header.key}" />: <span th:text="${header.value}" />
+					</li>
+				</ul>
+			</dev>
+			</dev>
 		</main>
 
 		<footer class="mt-auto text-white-50">
-			<p>Developed by <a href="https://github.com/GLinBoy" class="text-white">@GLinBoy</a>, Source is available at <a
-					href="https://github.com/GLinBoy/ip-info" class="text-white">IP-Info</a>.</p>
+			<p>Developed by <a href="https://github.com/GLinBoy" class="text-white">@GLinBoy</a>, Source is available at
+				<a href="https://github.com/GLinBoy/ip-info" class="text-white">IP-Info</a>.
+			</p>
 		</footer>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

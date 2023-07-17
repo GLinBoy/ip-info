@@ -47,11 +47,16 @@ public class HomeController {
 	}
 
 	@GetMapping("/index.html")
-	public String getHomeHtml(HttpServletRequest request, Model model) {
+	public String getHomeHtml(HttpServletRequest request, @RequestHeader MultiValueMap<String, String> requestHeaders,
+			@RequestParam(required = false, defaultValue = "") Collection<String> includes, Model model) {
 		Optional<String> userIpOptional = RequestUtils.extractIP(request, headerCandidates);
 
 		userIpOptional.ifPresentOrElse(i -> model.addAttribute(USER_IP_NAME, i),
 				() -> model.addAttribute(USER_IP_NAME, request.getRemoteAddr()));
+
+		if (includes.contains("headers")) {
+			model.addAttribute("headers", requestHeaders);
+		}
 
 		return "index";
 	}

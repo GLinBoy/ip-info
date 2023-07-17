@@ -63,7 +63,8 @@ public class HomeController {
 
 	@GetMapping("/index.json")
 	public ResponseEntity<IpInfoResponseDTO> getHomeJson(HttpServletRequest request,
-			@RequestHeader MultiValueMap<String, String> requestHeaders, @RequestParam Collection<String> includes) {
+			@RequestHeader MultiValueMap<String, String> requestHeaders,
+			@RequestParam(required = false, defaultValue = "") Collection<String> includes) {
 		Optional<String> userIpOptional = RequestUtils.extractIP(request, headerCandidates);
 		IpInfoResponseDTO ipInfo = IpInfoResponseDTO.builder().build();
 

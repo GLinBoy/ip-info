@@ -30,7 +30,7 @@
 					<h1 th:text="${USER_IP}">User IP</h1>
 				</dev>
 			</dev>
-			<dev class="row text-start"  data-bs-theme="dark">
+			<dev class="row text-start" data-bs-theme="dark" th:if="${headers != null}">
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item" th:each="header : ${headers}">
 						<b th:text="${header.key}" />: <span th:text="${header.value}" />

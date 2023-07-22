@@ -49,6 +49,7 @@ public class HomeController {
 	@GetMapping("/index.html")
 	public String getHomeHtml(HttpServletRequest request, @RequestHeader MultiValueMap<String, String> requestHeaders,
 			@RequestParam(required = false, defaultValue = "") Collection<String> includes, Model model) {
+		model.addAttribute("includes", includes);
 		Optional<String> userIpOptional = RequestUtils.extractIP(request, headerCandidates);
 
 		userIpOptional.ifPresentOrElse(i -> model.addAttribute(USER_IP_NAME, i),

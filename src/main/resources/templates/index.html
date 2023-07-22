@@ -19,7 +19,8 @@
 			<div>
 				<h3 class="float-md-start mb-0">IP info</h3>
 				<nav class="nav nav-masthead justify-content-center float-md-end">
-					<a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/">Home</a>
+					<a class="nav-link fw-bold py-1 px-0" href="/index.html" th:class="${includes.empty}?'nav-link active':'nav-link'">Home</a>
+					<a class="nav-link fw-bold py-1 px-0" href="/index.html?includes=headers" th:class="${#lists.contains(includes, 'headers')}?'nav-link active':'nav-link'">Headers</a>
 				</nav>
 			</div>
 		</header>

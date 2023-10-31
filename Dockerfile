@@ -1,6 +1,6 @@
 # Used ubuntu to set user and its group in a different way
 
-FROM eclipse-temurin:20-jdk AS builder
+FROM eclipse-temurin:21-jdk AS builder
 WORKDIR /workspace/app
 
 COPY .mvn .mvn

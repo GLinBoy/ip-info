@@ -10,7 +10,7 @@ COPY src src
 RUN ./mvnw clean package -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../ip-address-*.jar)
 
-FROM eclipse-temurin:20-jre AS runner
+FROM eclipse-temurin:21-jre AS runner
 VOLUME /tmp
 
 RUN useradd --user-group --system --create-home --no-log-init spring-app

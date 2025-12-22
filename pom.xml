@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.7</version>
+		<version>4.0.1</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.glinboy.ip.address</groupId>
@@ -15,7 +15,7 @@
 	<name>ip-address</name>
 	<description>A simple service to return user IP address</description>
 	<properties>
-		<java.version>23</java.version>
+		<java.version>25</java.version>
 		<webjars-locator.version>0.52</webjars-locator.version>
 		<bootstrap.version>5.3.3</bootstrap.version>
 		<editorconfig.version>0.1.3</editorconfig.version>

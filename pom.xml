@@ -17,8 +17,8 @@
 	<properties>
 		<java.version>25</java.version>
 		<webjars-locator.version>0.52</webjars-locator.version>
-		<bootstrap.version>5.3.3</bootstrap.version>
-		<editorconfig.version>0.1.3</editorconfig.version>
+		<bootstrap.version>5.3.8</bootstrap.version>
+		<editorconfig.version>0.2.0</editorconfig.version>
 	</properties>
 	<dependencies>
 		<dependency>

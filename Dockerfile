@@ -1,6 +1,6 @@
 # Used ubuntu to set user and its group in a different way
 
-FROM eclipse-temurin:25-jdk AS builder
+FROM eclipse-temurin:26-jdk AS builder
 WORKDIR /workspace/app
 
 COPY .mvn .mvn
@@ -10,7 +10,7 @@ COPY src src
 RUN ./mvnw clean package -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../ip-address-*.jar)
 
-FROM eclipse-temurin:25-jre AS runner
+FROM eclipse-temurin:26-jre AS runner
 VOLUME /tmp
 
 RUN useradd --user-group --system --create-home --no-log-init spring-app
